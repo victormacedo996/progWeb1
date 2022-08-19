@@ -3,6 +3,7 @@ package inicializacao;
 
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
@@ -41,7 +42,6 @@ public class Init implements ApplicationListener<ContextRefreshedEvent> {
         alunoService.salvar(aluno2);
         alunoService.salvar(aluno3);
 
-        
         List<Aluno> listaAlunos = alunoService.buscarTodosAlunos();
 
         for (Aluno aluno : listaAlunos) {
@@ -49,6 +49,15 @@ public class Init implements ApplicationListener<ContextRefreshedEvent> {
         }
         
         //repo.saveAll(Arrays.asList(aluno1, aluno2, aluno3));
+
+
+        Aluno aluno4 = alunoService.buscarAlunoId(1);
+
+        System.out.println(aluno4.getNome());
+
+        alunoService.deletarAlunoId(1);
+        
+
 
 
     }
