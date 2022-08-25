@@ -3,7 +3,6 @@ package inicializacao;
 
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
@@ -11,7 +10,7 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
 import br.com.senac.entity.Aluno;
-
+import br.com.senac.repository.AlunoRepository;
 import br.com.senac.service.AlunoService;
 
 @Component
@@ -20,8 +19,8 @@ public class Init implements ApplicationListener<ContextRefreshedEvent> {
     @Autowired
     AlunoService alunoService;
 
-    //@Autowired
-    //AlunoRepository repo;
+    @Autowired
+    AlunoRepository repo;
 
 
     @Override
@@ -55,10 +54,21 @@ public class Init implements ApplicationListener<ContextRefreshedEvent> {
 
         System.out.println(aluno4.getNome());
 
-        alunoService.deletarAlunoId(1);
+        // alunoService.deletarAlunoId(1);
+
+        Aluno alunoAlterado = new Aluno();
+        alunoAlterado.setId(1);
+        alunoAlterado.setNome("Lucas Silva");
+
+        alunoService.salvarAlteracao(alunoAlterado);
         
 
 
 
     }
 }
+
+
+// Turma
+// Professor
+// Curso
