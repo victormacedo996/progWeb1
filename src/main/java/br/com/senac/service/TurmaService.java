@@ -7,37 +7,37 @@ import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.senac.entity.Curso;
-import br.com.senac.repository.CursoRepository;
+import br.com.senac.entity.Turma;
+import br.com.senac.repository.TurmaRepository;
 
 @Service
 public class TurmaService {
 
     @Autowired
-    CursoRepository repo;
+    TurmaRepository repo;
 
-    public List<Curso> buscarTodosCursos(){
+    public List<Turma> buscarTodosTurmas(){
         return repo.findAll();
     }
 
-    public Curso salvar(Curso Curso){
-        return repo.save(Curso);
+    public Turma salvar(Turma turma){
+        return repo.save(turma);
     }
 
-    public Curso buscarCursoId(Integer id) throws ObjectNotFoundException{
-        Optional<Curso> Curso = repo.findById(id);
+    public Turma buscarTurmaId(Integer id) throws ObjectNotFoundException{
+        Optional<Turma> turma = repo.findById(id);
 
-        return Curso.orElseThrow( () -> new ObjectNotFoundException(1L, "Curso não encontrado"));
+        return turma.orElseThrow( () -> new ObjectNotFoundException(1L, "Turma não encontrado"));
     }
 
-    public void deletarCursoId(Integer id){
+    public void deletarTurmaId(Integer id){
         repo.deleteById(id);
     }
 
-    public Curso salvarAlteracao(Curso CursoAlterado){
-        Curso Curso = this.buscarCursoId(CursoAlterado.getId());
-        Curso.setNome(CursoAlterado.getNome());
-        return salvar(Curso);
+    public Turma salvarAlteracao(Turma turmaAlterado){
+        Turma turma = this.buscarTurmaId(turmaAlterado.getId());
+        turma.setNome(turmaAlterado.getNome());
+        return salvar(turma);
     }
 
 }
