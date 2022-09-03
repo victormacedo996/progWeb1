@@ -6,19 +6,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import br.com.senac.service.AlunoService;
+import br.com.senac.service.CursoService;
 
 @Controller
-@RequestMapping("aluno")
-public class AlunoController {
+@RequestMapping("curso")
+public class CursoController {
     
     @Autowired
-    private AlunoService service;
+    private CursoService service;
 
     @GetMapping("listar")
     public ModelAndView listarTodosAlunos(){
-        ModelAndView mv = new ModelAndView("aluno/paginaListaAlunos");
-        mv.addObject("alunos", service.buscarTodosAlunos());
+        ModelAndView mv = new ModelAndView("curso/paginaListaCursos");
+        mv.addObject("cursos", service.buscarTodosCursos());
 
         return mv;
     }

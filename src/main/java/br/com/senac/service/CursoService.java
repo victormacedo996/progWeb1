@@ -17,7 +17,7 @@ public class CursoService {
     @Autowired
     CursoRepository repo;
 
-    public List<Curso> buscarTodosAlunos(){
+    public List<Curso> buscarTodosCursos(){
         return repo.findAll();
     }
 

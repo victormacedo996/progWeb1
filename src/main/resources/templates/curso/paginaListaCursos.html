@@ -29,7 +29,7 @@ table td{
 <body>
     <div class="container mt-5">
         <div class="col-12">
-            <h1 class="display-4 text-center">Lista de Alunos</h1>
+            <h1 class="display-4 text-center">Lista de Cursos</h1>
             <table class="table table-hover">
                 <thead>
                     <tr>
@@ -38,9 +38,9 @@ table td{
                     </tr>
                 </thead>
                 <tbody class="table-group-divider">
-                    <tr th:each="aluno : ${alunos}">
-                        <th scope="row" th:text="${aluno.id}"></th>
-                        <td th:text="${aluno.nome}"></td>
+                    <tr th:each="cursos : ${cursos}">
+                        <th scope="row" th:text="${cursos.id}"></th>
+                        <td th:text="${cursos.nome}"></td>
                     </tr>
                 </tbody>
             </table>
