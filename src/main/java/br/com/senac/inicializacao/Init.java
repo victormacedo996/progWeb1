@@ -8,8 +8,12 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
 import br.com.senac.entity.Aluno;
+import br.com.senac.entity.Curso;
 import br.com.senac.entity.Professor;
+import br.com.senac.entity.Turma;
 import br.com.senac.service.AlunoService;
+import br.com.senac.service.TurmaService;
+import br.com.senac.service.CursoService;
 import br.com.senac.service.ProfessorService;
 
 @Component
@@ -20,6 +24,12 @@ public class Init implements ApplicationListener<ContextRefreshedEvent>{
 
 	@Autowired
 	private ProfessorService professorService;
+
+	@Autowired
+	private CursoService cursoService;
+
+	@Autowired
+	private TurmaService turmaService;
 
 	
 	
@@ -64,13 +74,13 @@ public class Init implements ApplicationListener<ContextRefreshedEvent>{
 
 
 		Professor professor1 = new Professor();
-		professor1.setNome("Lucas");
+		professor1.setNome("Daniel");
 		
 		Professor professor2 = new Professor();
-		professor2.setNome("Arthur");
+		professor2.setNome("Alberto");
 		
 		Professor professor3 = new Professor();
-		professor3.setNome("Jose");
+		professor3.setNome("Phelipe");
 
 		professorService.salvar(professor1);
 		professorService.salvar(professor2);
@@ -79,6 +89,42 @@ public class Init implements ApplicationListener<ContextRefreshedEvent>{
 		List<Professor> listarProfessores = professorService.buscarTodosProfessors();
 		for(Professor professor : listarProfessores) {
 			System.out.println(professor.getNome());
+		}
+
+		Curso curso1 = new Curso();
+		curso1.setNome("Java");
+		
+		Curso curso2 = new Curso();
+		curso2.setNome("Python");
+		
+		Curso curso3 = new Curso();
+		curso3.setNome("NodeJS");
+
+		cursoService.salvar(curso1);
+		cursoService.salvar(curso2);
+		cursoService.salvar(curso3);
+
+		List<Curso> listaCursos = cursoService.buscarTodosCursos();
+		for(Curso curso : listaCursos) {
+			System.out.println(curso.getNome());
+		}
+
+		Turma turma1 = new Turma();
+		turma1.setNome("Primeiro período");
+		
+		Turma turma2 = new Turma();
+		turma2.setNome("Segundo período");
+		
+		Turma turma3 = new Turma();
+		turma3.setNome("Terceiro período");
+
+		turmaService.salvar(turma1);
+		turmaService.salvar(turma2);
+		turmaService.salvar(turma3);
+
+		List<Turma> listaTurmas = turmaService.buscarTodosTurmas();
+		for(Turma Turma : listaTurmas) {
+			System.out.println(Turma.getNome());
 		}
 		
 	}
