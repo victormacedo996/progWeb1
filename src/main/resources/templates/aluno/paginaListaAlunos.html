@@ -41,12 +41,17 @@ table td{
                     <tr th:each="aluno : ${alunos}">
                         <th scope="row" th:text="${aluno.id}"></th>
                         <td th:text="${aluno.nome}"></td>
+                        <td th:text="${aluno.nome}"></td>
                     </tr>
                 </tbody>
             </table>
+            
         </div>
-
+        <div class="d-flex justify-content-center mt-2">
+            <a class="btn btn-sm btn-success mt-4" th:href="@{/aluno/cadastrar}">Cadastrar aluno</a>
+        </div>
     </div>
+    
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
