@@ -35,12 +35,19 @@ table td{
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Nome</th>
+                        <th scope="col">Ações</th>
                     </tr>
                 </thead>
                 <tbody class="table-group-divider">
-                    <tr th:each="cursos : ${cursos}">
-                        <th scope="row" th:text="${cursos.id}"></th>
-                        <td th:text="${cursos.nome}"></td>
+                    <tr th:each="curso : ${cursos}">
+                        <th scope="row" th:text="${curso.id}"></th>
+                        <td th:text="${curso.nome}"></td>
+                        <td scope="row" class="d-flex justify-content-center">
+                            <div>
+                                <a class="btn btn-sm btn-primary mt-4 mx-1 my-3" th:href="@{/curso/alterar/{id}/{nome}(id=${curso.id}, nome=${curso.nome})}">Alterar</a>
+                                <a class="btn btn-sm btn-danger mt-4 mx-1 my-3" th:href="@{/curso/deletar/{id}(id=${curso.id})}">Deletar</a>
+                            </div>
+                        </td>
                     </tr>
                 </tbody>
             </table>

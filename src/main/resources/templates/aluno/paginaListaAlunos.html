@@ -35,13 +35,19 @@ table td{
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Nome</th>
+                        <th scope="col">Ações</th>
                     </tr>
                 </thead>
                 <tbody class="table-group-divider">
                     <tr th:each="aluno : ${alunos}">
-                        <th scope="row" th:text="${aluno.id}"></th>
-                        <td th:text="${aluno.nome}"></td>
-                        <td th:text="${aluno.nome}"></td>
+                        <th scope="row" class="align-middle" th:text="${aluno.id}"></th>
+                        <td scope="row" class="align-middle" th:text="${aluno.nome}"></td>
+                        <td scope="row" class="d-flex justify-content-center">
+                            <div>
+                                <a class="btn btn-sm btn-primary mt-4 mx-1 my-3" th:href="@{/aluno/alterar/{id}/{nome}(id=${aluno.id}, nome=${aluno.nome})}">Alterar</a>
+                                <a class="btn btn-sm btn-danger mt-4 mx-1 my-3" th:href="@{/aluno/deletar/{id}(id=${aluno.id})}">Deletar</a>
+                            </div>
+                        </td>
                     </tr>
                 </tbody>
             </table>
