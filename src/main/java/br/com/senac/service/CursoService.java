@@ -36,9 +36,10 @@ public class CursoService {
     }
 
     public Curso salvarAlteracao(Curso cursoAlterado){
-        Curso Curso = this.buscarCursoId(cursoAlterado.getId());
-        Curso.setNome(cursoAlterado.getNome());
-        return salvar(Curso);
+        Curso curso = this.buscarCursoId(cursoAlterado.getId());
+        curso.setNome(cursoAlterado.getNome());
+        curso.setProfessor(cursoAlterado.getProfessor());
+        return salvar(curso);
     }
     
 }
