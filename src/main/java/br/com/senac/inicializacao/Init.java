@@ -1,5 +1,6 @@
 package br.com.senac.inicializacao;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import br.com.senac.entity.Aluno;
 import br.com.senac.entity.Curso;
 import br.com.senac.entity.Professor;
 import br.com.senac.entity.Turma;
+import br.com.senac.repository.ProfessorRepository;
 import br.com.senac.service.AlunoService;
 import br.com.senac.service.TurmaService;
 import br.com.senac.service.CursoService;
@@ -24,6 +26,9 @@ public class Init implements ApplicationListener<ContextRefreshedEvent>{
 
 	@Autowired
 	private ProfessorService professorService;
+
+	@Autowired
+	private ProfessorRepository professorRepository;
 
 	@Autowired
 	private CursoService cursoService;
@@ -82,9 +87,11 @@ public class Init implements ApplicationListener<ContextRefreshedEvent>{
 		Professor professor3 = new Professor();
 		professor3.setNome("Phelipe");
 
-		professorService.salvar(professor1);
-		professorService.salvar(professor2);
-		professorService.salvar(professor3);
+		// professorService.salvar(professor1);
+		// professorService.salvar(professor2);
+		// professorService.salvar(professor3);
+
+		professorRepository.saveAll(Arrays.asList(professor1, professor2, professor3));
 
 		List<Professor> listarProfessores = professorService.buscarTodosProfessors();
 		for(Professor professor : listarProfessores) {
@@ -99,6 +106,10 @@ public class Init implements ApplicationListener<ContextRefreshedEvent>{
 		
 		Curso curso3 = new Curso();
 		curso3.setNome("NodeJS");
+
+		curso1.setProfessor(professor1);
+		curso2.setProfessor(professor2);
+		curso3.setProfessor(professor3);
 
 		cursoService.salvar(curso1);
 		cursoService.salvar(curso2);
