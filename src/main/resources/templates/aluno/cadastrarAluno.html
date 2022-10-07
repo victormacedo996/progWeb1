@@ -20,6 +20,15 @@
                         <label>Nome</label>
                         <input type="text" class="form-control input-sm" th:field="*{nome}" placeholder="Informe o nome" maxlength="50"/>
                     </div>
+                    <div class="form-group">
+                        <label>
+                            Turma
+                        </label>
+                        <select class="form-control" th:field="*{turma}">
+                            <option value="">Selecione uma turma</option>
+                            <option th:each="turma : ${turmas}" th:value="${turma.id}" th:text="${turma.nome}" ></option>
+                        </select>
+                    </div>
                 </fieldset>
                 <div class="d-flex justify-content-center mt-2">
                     <button type="submit" class="btn btn-sm btn-success mx-1">Salvar</button>

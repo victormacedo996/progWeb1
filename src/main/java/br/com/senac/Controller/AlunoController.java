@@ -13,6 +13,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import br.com.senac.entity.Aluno;
 import br.com.senac.service.AlunoService;
+import br.com.senac.service.TurmaService;
 
 @Controller
 @RequestMapping("aluno")
@@ -20,6 +21,9 @@ public class AlunoController {
     
     @Autowired
     private AlunoService service;
+
+    @Autowired
+    private TurmaService turmaService;
 
     @GetMapping("listar") // http://localhost:8080/aluno/listar
     public ModelAndView listarTodosAlunos(){
@@ -33,6 +37,7 @@ public class AlunoController {
     public ModelAndView cadastrarAluno(){
         ModelAndView mv = new ModelAndView("aluno/cadastrarAluno");
         mv.addObject("aluno", new Aluno());
+        mv.addObject("turmas", turmaService.buscarTodosTurmas());
         return mv;
     }
 
@@ -49,6 +54,7 @@ public class AlunoController {
         aluno.setId(id);
         aluno.setNome(nome);
         mv.addObject("aluno", aluno);
+        mv.addObject("turmas", turmaService.buscarTodosTurmas());
         return mv;
     }
 
