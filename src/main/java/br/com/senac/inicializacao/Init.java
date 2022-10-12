@@ -2,7 +2,7 @@ package br.com.senac.inicializacao;
 
 import java.util.ArrayList;
 //import java.util.Arrays;
-import java.util.List;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
@@ -13,7 +13,7 @@ import br.com.senac.entity.Aluno;
 import br.com.senac.entity.Curso;
 import br.com.senac.entity.Turma;
 import br.com.senac.repository.ProfessorRepository;
-//import br.com.senac.repository.AlunoRepository;
+
 import br.com.senac.service.AlunoService;
 import br.com.senac.service.CursoService;
 import br.com.senac.service.ProfessorService;
@@ -29,6 +29,12 @@ public class Init implements ApplicationListener<ContextRefreshedEvent>{
 	CursoService cursoService;
 	@Autowired
 	TurmaService turmaService;
+
+	private ProfessorRepository professorRepository;
+
+	@Autowired
+	private CursoService cursoService;
+
 	@Autowired
 	private ProfessorService professorService;
 	
@@ -75,6 +81,7 @@ public class Init implements ApplicationListener<ContextRefreshedEvent>{
 		listaCursos2.add(c1);
 		listaCursos2.add(c3);
 		
+
 		Turma t1 = new Turma();
 		t1.setNome("Turma 1");
 		t1.setCurso(listaCursos1);
@@ -89,6 +96,7 @@ public class Init implements ApplicationListener<ContextRefreshedEvent>{
 		t3.setNome("Turma 3");
 		t3.setCurso(listaCursos3);
 		turmaService.salvar(t3);
+
 		
 		Aluno aluno1 = new Aluno();
 		aluno1.setNome("Rogerio");
