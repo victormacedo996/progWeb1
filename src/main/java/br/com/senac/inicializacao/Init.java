@@ -2,7 +2,7 @@ package br.com.senac.inicializacao;
 
 import java.util.ArrayList;
 //import java.util.Arrays;
-
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
@@ -10,11 +10,14 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
 import br.com.senac.entity.Aluno;
+import br.com.senac.entity.AlunoCurso;
+import br.com.senac.entity.Avaliacao;
 import br.com.senac.entity.Curso;
 import br.com.senac.entity.Turma;
 import br.com.senac.repository.ProfessorRepository;
-
+//import br.com.senac.repository.AlunoRepository;
 import br.com.senac.service.AlunoService;
+import br.com.senac.service.AvaliacaoService;
 import br.com.senac.service.CursoService;
 import br.com.senac.service.ProfessorService;
 import br.com.senac.service.TurmaService;
@@ -29,12 +32,6 @@ public class Init implements ApplicationListener<ContextRefreshedEvent>{
 	CursoService cursoService;
 	@Autowired
 	TurmaService turmaService;
-
-	private ProfessorRepository professorRepository;
-
-	@Autowired
-	private CursoService cursoService;
-
 	@Autowired
 	private ProfessorService professorService;
 	
@@ -42,6 +39,9 @@ public class Init implements ApplicationListener<ContextRefreshedEvent>{
 	private ProfessorRepository profRepository; 
 	//@Autowired
 	//AlunoRepository repo;
+	
+	@Autowired
+	private AvaliacaoService avaliacaoService;
 	
 	
 	
@@ -66,8 +66,6 @@ public class Init implements ApplicationListener<ContextRefreshedEvent>{
 		// Curso c4 = new Curso();
 		// c4.setNome(".Net");
 		// cursoService.salvar(c4);
-
-		
 		
 		
 		// List<Curso> listaCursos1 = new ArrayList();
@@ -112,154 +110,18 @@ public class Init implements ApplicationListener<ContextRefreshedEvent>{
 		// alunoService.salvar(aluno2);
 		// alunoService.salvar(aluno3);
 		
-		// List<Aluno> listaAlunos = alunoService.buscarTodosAlunos();
-
-
-			
-		Curso c1 = new Curso();
-		c1.setNome("Java");
-		cursoService.salvar(c1);
+		// Avaliacao avaliacao1 = new Avaliacao();
+		// AlunoCurso alunoCurso1 = new AlunoCurso();
+		// alunoCurso1.setAluno(aluno1);
+		// alunoCurso1.setCurso(c4);
+		// avaliacao1.setAlunoCurso(alunoCurso1);
+		// avaliacao1.setConceito("I");
 		
-
-		// for(Aluno aluno : listaAlunos) {
-		// 	System.out.println(aluno.getNome());
-		// }
+		// avaliacaoService.save(avaliacao1);
 		
-		// //Busca por id
-		// Aluno aluno4 = alunoService.buscarAlunoId(1);
-		
-		// System.out.println(aluno4.getNome());
-		
-		// //deleção por id
-		// alunoService.deletarAlunoId(2);
-
-			//Curso c2 = new Curso();
-			//c2.setNome("NodeJS");
-			//cursoService.salvar(c2);
-		
-			//Curso c3 = new Curso();
-			//c3.setNome("Python");
-			//cursoService.salvar(c3);
-		
-			//Curso c4 = new Curso();
-			//c4.setNome(".Net");
-			//cursoService.salvar(c4);
-
-		
-			//List<Curso> listaCursos1 = new ArrayList();
-			//	//listaCursos1.add(c1);
-			//listaCursos1.add(c4);
-
-		// Aluno alunoAlterado = new Aluno();
-		// alunoAlterado.setId(1);
-		// alunoAlterado.setNome("Lucas Silva");
-		
-		// alunoService.salvarAlteracao(alunoAlterado);
-
-
-		// Professor professor1 = new Professor();
-		// professor1.setNome("Daniel");
-		
-		// Professor professor2 = new Professor();
-		// professor2.setNome("Alberto");
-		
-		// Professor professor3 = new Professor();
-		// professor3.setNome("Phelipe");
-
-		// professorService.salvar(professor1);
-		// professorService.salvar(professor2);
-		// professorService.salvar(professor3);
-
-		// professorRepository.saveAll(Arrays.asList(professor1, professor2, professor3));
-
-		// List<Professor> listarProfessores = professorService.buscarTodosProfessors();
-		// for(Professor professor : listarProfessores) {
-		// 	System.out.println(professor.getNome());
-		// }
-
-		// Curso curso1 = new Curso();
-		// curso1.setNome("Java");
-		
-		// Curso curso2 = new Curso();
-		// curso2.setNome("Python");
-		
-		// Curso curso3 = new Curso();
-		// curso3.setNome("NodeJS");
-
-		// curso1.setProfessor(professor1);
-		// curso2.setProfessor(professor2);
-		// curso3.setProfessor(professor3);
-
-		// cursoService.salvar(curso1);
-		// cursoService.salvar(curso2);
-		// cursoService.salvar(curso3);
-
-		// List<Curso> listaCursos = cursoService.buscarTodosCursos();
-		// for(Curso curso : listaCursos) {
-		// 	System.out.println(curso.getNome());
-		// }
-
-		// Turma turma1 = new Turma();
-		// turma1.setNome("Primeiro período");
-		
-		// Turma turma2 = new Turma();
-		// turma2.setNome("Segundo período");
-		
-		// Turma turma3 = new Turma();
-		// turma3.setNome("Terceiro período");
-
-		// turmaService.salvar(turma1);
-		// turmaService.salvar(turma2);
-		// turmaService.salvar(turma3);
-
-		// List<Turma> listaTurmas = turmaService.buscarTodosTurmas();
-		// for(Turma Turma : listaTurmas) {
-		// 	System.out.println(Turma.getNome());
-		// }
-		
-
-		
-			//List<Curso> listaCursos2 = new ArrayList();
-			//listaCursos2.add(c2);
-			//listaCursos2.add(c3);
-		
-			//List<Curso> listaCursos3 = new ArrayList();
-			//listaCursos2.add(c1);
-			//listaCursos2.add(c3);
-		
-
-			//Turma t1 = new Turma();
-			//t1.setNome("Turma 1");
-			//t1.setCurso(listaCursos1);
-			//turmaService.salvar(t1);
-		
-			//Turma t2 = new Turma();
-			//t2.setNome("Turma 2");
-			//	//t2.setCurso(listaCursos2);
-			//turmaService.salvar(t2);
-		
-			//Turma t3 = new Turma();
-			//t3.setNome("Turma 3");
-			//t3.setCurso(listaCursos3);
-			//turmaService.salvar(t3);
-
-		
-			//Aluno aluno1 = new Aluno();
-			//aluno1.setNome("Rogerio");
-			//aluno1.setTurma(t1);
-			//Aluno aluno2 = new Aluno();
-			//aluno2.setNome("Alfredo");
-			//aluno2.setTurma(t2);
-			//Aluno aluno3 = new Aluno();
-			//aluno3.setNome("Juleide");
-			//aluno3.setTurma(t3);
-		
-			//alunoService.salvar(aluno1);
-			//alunoService.salvar(aluno2);
-			//alunoService.salvar(aluno3);
 		
 		//repo.saveAll(Arrays.asList(aluno1, aluno2, aluno3));
-
+		
 //		System.out.println("-----------------------------");
 //		
 //		List<Aluno> listaAlunos = alunoService.selectAll();
@@ -420,17 +282,5 @@ public class Init implements ApplicationListener<ContextRefreshedEvent>{
 //		
 //		System.out.println("----------------------------");
 //		
-
-		// Professor p1 = new Professor();
-		// Professor p2 = new Professor();
-		// Professor p3 = new Professor();
-		// Professor p4 = new Professor();
-
-		// List<Curso> dale = cursoService.buscarTodosCursos();
-
-		// for (Curso curso : dale) {
-		// 	System.out.println(curso.getNome());
-		// }
-
 	}
 }
