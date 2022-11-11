@@ -3,6 +3,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import java.util.List;
 
@@ -28,7 +32,16 @@ public class Turma {
 
     public List<Curso> getCursos(){
         return this.cursos;
-    } 
+    }
+
+    @OneToMany(mappedBy = "turma")
+    @Fetch(value = FetchMode.JOIN)
+    private List<Aluno> alunos;
+    
+
+    public void setAlunos(List<Aluno> alunos) {
+        this.alunos = alunos;
+    }
 
     public void setCurso(List<Curso> cursos){
         this.cursos = cursos;
@@ -50,6 +63,10 @@ public class Turma {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public List<Aluno> getAlunos() {
+        return alunos;
     }
 
 }
