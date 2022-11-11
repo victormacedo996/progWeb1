@@ -10,6 +10,8 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
 import br.com.senac.entity.Aluno;
+import br.com.senac.entity.LivroL;
+import br.com.senac.entity.LivroL;
 import br.com.senac.entity.AlunoCurso;
 import br.com.senac.entity.Avaliacao;
 import br.com.senac.entity.Curso;
@@ -24,11 +26,12 @@ import br.com.senac.service.AlunoService;
 import br.com.senac.service.AvaliacaoService;
 import br.com.senac.service.CursoService;
 import br.com.senac.service.EnderecoService;
+import br.com.senac.service.LivroService;
 import br.com.senac.service.ProfessorService;
 import br.com.senac.service.TurmaService;
 
 @Component
-public class Init implements ApplicationListener<ContextRefreshedEvent>{
+public class Init<Livro> implements ApplicationListener<ContextRefreshedEvent>{
 
 	@Autowired
 	private AlunoService alunoService;
@@ -53,69 +56,49 @@ public class Init implements ApplicationListener<ContextRefreshedEvent>{
 
 	@Autowired
 	private EnderecoService enderecoService;
+
+	@Autowired
+	private LivroService livroService;
 	
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent event) {
 		//ALUNO
 
-		Curso curso1 = new Curso();
-		curso1.setNome("NodeJs");
-		Curso curso2 = new Curso();
-		curso2.setNome("ASP.NET");
-		Curso curso3 = new Curso();
-		curso3.setNome("Spring Boot");
-		Curso curso4 = new Curso();
-		curso4.setNome("C");
+		// Curso curso1 = new Curso();
+		// curso1.setNome("NodeJs");
+		// Curso curso2 = new Curso();
+		// curso2.setNome("ASP.NET");
+		// Curso curso3 = new Curso();
+		// curso3.setNome("Spring Boot");
+		// Curso curso4 = new Curso();
+		// curso4.setNome("C");
 
 
-		Professor p1 = new Professor();
-		p1.setNome("Lucas");
-		Professor p2 = new Professor();
-		p2.setNome("Joao");
-		Professor p3 = new Professor();
-		p3.setNome("Claudio");
-		Professor p4 = new Professor();
-		p4.setNome("Junior");
+		// Professor p1 = new Professor();
+		// p1.setNome("Lucas");
+		// Professor p2 = new Professor();
+		// p2.setNome("Joao");
+		// Professor p3 = new Professor();
+		// p3.setNome("Claudio");
+		// Professor p4 = new Professor();
+		// p4.setNome("Junior");
 
-		professorService.salvar(p1);
-		professorService.salvar(p2);
-		professorService.salvar(p3);
-		professorService.salvar(p4);
+		// professorService.salvar(p1);
+		// professorService.salvar(p2);
+		// professorService.salvar(p3);
+		// professorService.salvar(p4);
 
-		List<Curso> listaCursos1 =  new ArrayList<>();
-		listaCursos1.add(curso1);
-		listaCursos1.add(curso4);
+		// List<Curso> listaCursos1 =  new ArrayList<>();
+		// listaCursos1.add(curso1);
+		// listaCursos1.add(curso4);
 
-		List<Curso> listaCursos2 =  new ArrayList<>();
-		listaCursos2.add(curso1);
-		listaCursos2.add(curso3);
+		// List<Curso> listaCursos2 =  new ArrayList<>();
+		// listaCursos2.add(curso1);
+		// listaCursos2.add(curso3);
 
-		List<Curso> listaCursos3 =  new ArrayList<>();
-		listaCursos3.add(curso1);
-		listaCursos3.add(curso3);
-
-		curso1.setProfessor(p1);
-		curso2.setProfessor(p3);
-		curso3.setProfessor(p2);
-
-		cursoService.salvar(curso1);
-		cursoService.salvar(curso2);
-		cursoService.salvar(curso3);
-		cursoService.salvar(curso4);
-
-
-		Turma t1 = new Turma();
-		t1.setNome("turma 1");
-		t1.setCurso(listaCursos1);
-		turmaService.salvar(t1);
-		Turma t2 = new Turma();
-		t2.setNome("turma 2");
-		t2.setCurso(listaCursos2);
-		turmaService.salvar(t2);
-		Turma t3 = new Turma();
-		t3.setNome("turma 3");
-		t3.setCurso(listaCursos3);
-		turmaService.salvar(t3);	
+		// List<Curso> listaCursos3 =  new ArrayList<>();
+		// listaCursos3.add(curso1);
+		// listaCursos3.add(curso3);
 
 		// curso1.setProfessor(p1);
 		// curso2.setProfessor(p3);
@@ -126,26 +109,49 @@ public class Init implements ApplicationListener<ContextRefreshedEvent>{
 		// cursoService.salvar(curso3);
 		// cursoService.salvar(curso4);
 
-		Aluno aluno1 = new Aluno();
-		aluno1.setNome("Lucas");
-		aluno1.setTurma(t3);
-		
-		Aluno aluno2 = new Aluno();
-		aluno2.setNome("Arthur");
-		aluno2.setTurma(t3);
-		
-		Aluno aluno3 = new Aluno();
-		aluno3.setNome("Jose");
-		aluno3.setTurma(t1);
 
-		Aluno aluno4 = new Aluno();
-		aluno4.setNome("Walter");
-		aluno4.setTurma(t3);
+		// Turma t1 = new Turma();
+		// t1.setNome("turma 1");
+		// t1.setCurso(listaCursos1);
+		// turmaService.salvar(t1);
+		// Turma t2 = new Turma();
+		// t2.setNome("turma 2");
+		// t2.setCurso(listaCursos2);
+		// turmaService.salvar(t2);
+		// Turma t3 = new Turma();
+		// t3.setNome("turma 3");
+		// t3.setCurso(listaCursos3);
+		// turmaService.salvar(t3);	
+
+		// curso1.setProfessor(p1);
+		// curso2.setProfessor(p3);
+		// curso3.setProfessor(p2);
+
+		// cursoService.salvar(curso1);
+		// cursoService.salvar(curso2);
+		// cursoService.salvar(curso3);
+		// cursoService.salvar(curso4);
+
+		// Aluno aluno1 = new Aluno();
+		// aluno1.setNome("Lucas");
+		// aluno1.setTurma(t3);
 		
-		alunoService.salvar(aluno1);
-		alunoService.salvar(aluno2);
-		alunoService.salvar(aluno3);
-		alunoService.salvar(aluno4);
+		// Aluno aluno2 = new Aluno();
+		// aluno2.setNome("Arthur");
+		// aluno2.setTurma(t3);
+		
+		// Aluno aluno3 = new Aluno();
+		// aluno3.setNome("Jose");
+		// aluno3.setTurma(t1);
+
+		// Aluno aluno4 = new Aluno();
+		// aluno4.setNome("Walter");
+		// aluno4.setTurma(t3);
+		
+		// alunoService.salvar(aluno1);
+		// alunoService.salvar(aluno2);
+		// alunoService.salvar(aluno3);
+		// alunoService.salvar(aluno4);
 
 		// List<Turma> listaTurmas = turmaService.buscarTodasTurmas();
 
@@ -164,44 +170,44 @@ public class Init implements ApplicationListener<ContextRefreshedEvent>{
 		// 	}
 		// }
 
-		Endereco endereco1 = new Endereco();
-		endereco1.setRua("Rua Caxias");
-		endereco1.setNumero(4);
-		endereco1.setComplemento("Proximo a praca");
-		endereco1.setBairro("Jardim Caxias");
-		endereco1.setCep("2000010");
+		// Endereco endereco1 = new Endereco();
+		// endereco1.setRua("Rua Caxias");
+		// endereco1.setNumero(4);
+		// endereco1.setComplemento("Proximo a praca");
+		// endereco1.setBairro("Jardim Caxias");
+		// endereco1.setCep("2000010");
 
 
-		Endereco endereco2 = new Endereco();
-		endereco2.setRua("Rua Madureira");
-		endereco2.setNumero(8);
-		endereco2.setComplemento("Proximo ao calcadao");
-		endereco2.setBairro("Jardim Madureira");
-		endereco2.setCep("2000020");
+		// Endereco endereco2 = new Endereco();
+		// endereco2.setRua("Rua Madureira");
+		// endereco2.setNumero(8);
+		// endereco2.setComplemento("Proximo ao calcadao");
+		// endereco2.setBairro("Jardim Madureira");
+		// endereco2.setCep("2000020");
 
-		Endereco endereco3 = new Endereco();
-		endereco3.setRua("Rua Sao Joao");
-		endereco3.setNumero(12);
-		endereco3.setComplemento("proximo ao parque");
-		endereco3.setBairro("Jardim Sao Joao");
-		endereco3.setCep("200030");
+		// Endereco endereco3 = new Endereco();
+		// endereco3.setRua("Rua Sao Joao");
+		// endereco3.setNumero(12);
+		// endereco3.setComplemento("proximo ao parque");
+		// endereco3.setBairro("Jardim Sao Joao");
+		// endereco3.setCep("200030");
 
-		Endereco endereco4 = new Endereco();
-		endereco4.setRua("Rua Japeri");
-		endereco4.setNumero(16);
-		endereco4.setComplemento("proximo ao trem");
-		endereco4.setBairro("Jardim Japeri");
-		endereco4.setCep("200060");
+		// Endereco endereco4 = new Endereco();
+		// endereco4.setRua("Rua Japeri");
+		// endereco4.setNumero(16);
+		// endereco4.setComplemento("proximo ao trem");
+		// endereco4.setBairro("Jardim Japeri");
+		// endereco4.setCep("200060");
 
-		endereco1.setAluno(aluno1);
-		endereco2.setAluno(aluno1);
-		endereco3.setAluno(aluno4);
-		endereco4.setAluno(aluno4);
+		// endereco1.setAluno(aluno1);
+		// endereco2.setAluno(aluno1);
+		// endereco3.setAluno(aluno4);
+		// endereco4.setAluno(aluno4);
 
-		enderecoService.salvar(endereco1);
-		enderecoService.salvar(endereco2);
-		enderecoService.salvar(endereco3);
-		enderecoService.salvar(endereco4);
+		// enderecoService.salvar(endereco1);
+		// enderecoService.salvar(endereco2);
+		// enderecoService.salvar(endereco3);
+		// enderecoService.salvar(endereco4);
 
 		// Aluno al1 = alunoService.buscaPorNome("Lucas");
 		
@@ -219,11 +225,11 @@ public class Init implements ApplicationListener<ContextRefreshedEvent>{
 		// .forEach(end -> System.out.println("Aluno nome: " + end.getAluno().getNome()
 		// 	+ " Rua: " + end.getRua())));
 
-		List<Aluno> alunoComEndereco = alunoService.buscarAlunoPeloNomeComEndereco("Lucas");
+		// List<Aluno> alunoComEndereco = alunoService.buscarAlunoPeloNomeComEndereco("Lucas");
 		
-		alunoComEndereco.forEach(a -> a.getEnderecos()
-		.forEach(end -> System.out.println("Aluno nome: " + end.getAluno().getNome()
-		+ " Rua: " + end.getRua())));
+		// alunoComEndereco.forEach(a -> a.getEnderecos()
+		// .forEach(end -> System.out.println("Aluno nome: " + end.getAluno().getNome()
+		// + " Rua: " + end.getRua())));
 
 		// Turma turma = turmaService.buscarListaAlunosTurma(3);
 
@@ -231,11 +237,11 @@ public class Init implements ApplicationListener<ContextRefreshedEvent>{
 
 		// alunosDaTurma.forEach((aluno) -> System.out.println("Nome do aluno: " + aluno.getNome()));
 
-		Turma turma = turmaService.findTurmaByIdTurma(3);
+		// Turma turma = turmaService.findTurmaByIdTurma(3);
 
-		List<Aluno> alunosDaTurma = turma.getAlunos();
+		// List<Aluno> alunosDaTurma = turma.getAlunos();
 
-		alunosDaTurma.forEach((aluno) -> System.out.println("Nome do aluno: " + aluno.getNome()));
+		// alunosDaTurma.forEach((aluno) -> System.out.println("Nome do aluno: " + aluno.getNome()));
 		 
 		// List<Aluno> listaAlunos = alunoService.buscarTodosAlunos();
 		// for (Aluno aluno : listaAlunos) {
@@ -356,16 +362,47 @@ public class Init implements ApplicationListener<ContextRefreshedEvent>{
 
 		// AVALIACAO
 
-		Avaliacao avaliacao1 = new Avaliacao();
+		// Avaliacao avaliacao1 = new Avaliacao();
 		
-		AlunoCurso alunoCurso1 = new AlunoCurso();
-		alunoCurso1.setAluno(aluno1);
-		alunoCurso1.setCurso(curso4);
+		// AlunoCurso alunoCurso1 = new AlunoCurso();
+		// alunoCurso1.setAluno(aluno1);
+		// alunoCurso1.setCurso(curso4);
 
-		avaliacao1.setAlunoCurso(alunoCurso1);
-		avaliacao1.setConceito("I");
+		// avaliacao1.setAlunoCurso(alunoCurso1);
+		// avaliacao1.setConceito("I");
 
-		avaliacaoService.save(avaliacao1);
+		// avaliacaoService.save(avaliacao1);
+
+		
+
+		Professor p1 = new Professor();
+		p1.setNome("Lucas");
+
+		professorService.salvar(p1);
+
+		LivroL l1 = new LivroL();
+
+		l1.setNome("Nome1");
+		l1.setIsbn("123456");
+		l1.setProfessor(p1);
+
+		livroService.salvar(l1);
+
+		LivroL l2 = new LivroL();
+		l2.setNome("Nome2");
+		l2.setIsbn("123446");
+		l2.setProfessor(p1);
+
+		livroService.salvar(l2);
+
+		List<LivroL> livros = livroService.buscarLivrosDoProf(p1);
+
+		livros.forEach(livro -> System.out.println("Nome: " + livro.getNome()));
+
+		
+
+
+
 	}
 	
 }
