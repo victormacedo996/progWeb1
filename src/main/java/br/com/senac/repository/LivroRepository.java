@@ -1,4 +1,5 @@
 package br.com.senac.repository;
+
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -8,6 +9,6 @@ import br.com.senac.entity.LivroL;
 import br.com.senac.entity.Professor;
 
 @Repository
-public interface ProfessorRepository extends JpaRepository<Professor, Integer>{
-    
+public interface LivroRepository extends JpaRepository<LivroL, Integer> {
+    List<LivroL> findByProfessor(Professor professor); 
 }
