@@ -398,9 +398,12 @@ public class Init<Livro> implements ApplicationListener<ContextRefreshedEvent>{
 		List<LivroL> livros = livroService.buscarLivrosDoProf(p1);
 
 		livros.forEach(livro -> System.out.println("Nome: " + livro.getNome()));
-
 		
+		List<LivroL> livros2 = professorService.buscarLivrosDoProf(p1);
 
+		livros2.forEach(livro -> System.out.println("Nome: " + livro.getNome()));
+		
+		
 
 
 	}

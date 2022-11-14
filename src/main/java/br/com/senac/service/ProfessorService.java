@@ -40,8 +40,8 @@ public class ProfessorService {
         return salvar(professor);
     }
 
-    public List<LivroL> buscaLivros(Professor professor){
-        return repo.findByProfessor(professor);
+    public List<LivroL> buscarLivrosDoProf(Professor professor){
+        return repo.buscarLivros(professor.getId());
     }
 
 }
